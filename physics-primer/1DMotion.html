@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One-Dimensional Motion</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+
+    <h1>One-Dimensional Motion</h1>
+
+    <p>
+        Much of physics is concerned with motion. If you've never done physics before, some of this may seem pointless or redundant, but in order to describe the universe, we must be very specific.
+        To begin, we will restrict ourselves to 
+        <strong>one-dimensional motion</strong>, meaning motion along a straight line.
+    </p>
+        To describe motion, the first thing we must describe is where something <em>is</em>. We refer to this as an object's <strong>position</strong>. The position of a particle 
+        tells us (in 1-D) where it is located along a line, and is usually written as \( x \).
+        In general, position depends on time, so we can write it as
+    </p>
+
+    <div class="equation">\( x(t) \)</div>
+
+    <p>If you don't have much familiarity with math (or if its been a while), try to spend a moment considering this notation. We say here that x is a "function" of t, meaning the position of an object depends on how much time has passed.
+       We can then "plug in" different values of t, and we will get a different position, depending on what the actual function is. (This changes based on the real world physical situation)</p>
+    <div class = "note">
+        Note: So if x(t) = x^2 + 1, at t = 2 seconds, we get a position of 5 units.
+    </div>
+
+    <h2>Displacement</h2>
+
+    <p>
+        If we observe a particle at two different times, \( t_1 \) and \( t_2 \), 
+        its position may change. We have a name for this change in position, called <strong>displacement</strong>.
+    </p>
+
+    <div class="equation">\( \Delta x = x_2 - x_1 \)</div>
+
+    <p>
+        Displacement is a <strong>vector quantity</strong>, which we will discuss more in depth in the vectors chapter. Suffice to say for now, it is not only a number, but also a direction attached to it
+        (e.g. an object moves 5 meters to the <strong>right</strong>). 
+        In one dimension, direction is indicated by the sign (positive or negative).
+    </p>
+    <p>
+        Try it yourself! Below you can play around with two positions: x_1 and x_2. We can see that if x_1 < x_2, the sign of the vector is positive. If x_1 > x_2, the vector flips, and the sign
+        becomes negative.
+    </p>
+
+    <div class="applet-box">
+        <canvas id="displacementCanvas"
+                width="800"
+                height="250">
+        </canvas>
+    </div>
+
+    <script type = "module"
+            src = "displacement.js">
+    </script>
+
+    <div class = "note">
+        Note regarding signs: Negative corresponding to the vector pointing to the left and positive corresponding to the vector pointing right is merely convention. It is correct to
+        think of it in either way, as long as we remain consistent. Throughout these notes, I will keep negative left and positive right, for sake of consistency, ease, and because it
+        is simply what most people do (probably because we read from left to right). It is best to keep things intuitive.
+    </div>
+
+    <h2>Velocity</h2>
+
+    <p>
+        Velocity describes how position changes over time. It is also a 
+        <strong>vector quantity</strong>. (Meaning it has a size and a direction associated with it).
+    </p>
+
+
+
+    <p>
+        Imagine yourself on a roadtrip, driving on the highway. You stop to take a break at a rest stop. Let's say you drive another 10 miles, and then take another break.
+        You look at the clock and 10 minutes have passed. With some quick division, we can surmise that you were driving 60 miles an hour. We call this our <strong>average velocity.</strong>
+
+        However, it is not the whole story. Pulling in and out of the rest stop means you must be going slower, which means you probably went faster somewhere in the middle to compensate.
+        Our exact velocity at any given moment (as if you were reading the speedometer) is called <strong>instantaneous velocity.</strong> We can calculate these two values like so:
+    </p>
+
+    <p><strong>Average velocity:</strong></p>
+
+    <div class="equation">\( v_{avg} = \frac{\Delta x}{\Delta t} \)</div>   
+
+    <p><strong>Instantaneous velocity:</strong></p>
+
+    <div class="equation">\( v = \frac{dx}{dt} \)</div>
+
+    <p>If you have never seen this notation before, you probably have not dealt with calculus. These notes will assume some familiarity with calculus concepts, but nothing too in depth.
+       Calculus is the branch of math that deals in how things change. In this instance, all this notation means is "velocity is equal to how fast position is changing with respect to time". We
+       can see this by looking at velocity's standard units, meters per second, or m/s. In the language of calculus, we call this a <strong>derivative.</strong> Velocity is the derivative of position.
+
+       We will discuss calculus a bit more at the end of the chapter, and more in later chapters, but it would be <strong>EXTREMELY</strong> useful to go learn the basics of calculus as you learn physics!
+    </p>
+
+    <div class = "note">
+        Note: We can see that the units of velocity are m/s, which mirrors the equation we use to calculate it. Units are very important in physics, and we should always double check ourselves by looking
+        at the units of the quantities we are dealing with!
+    </div>
+
+    <p>
+        If we ignore direction and only consider how fast an object is moving, 
+        we call this <strong>speed</strong>, which is a scalar quantity. (There is no direction associated with speed.)
+    </p>
+
+    <h2>Acceleration</h2>
+
+    <p>
+        Imagine our car scenario again. When you leave the parking lot, to get back onto the highway, you must speed up. To get to the next rest stop and park there, you must slow down.
+        In physics, we want to be exact by what we mean when we say these things. What does speeding up mean? Slowing down? This is where <strong>acceleration</strong> comes in. 
+    </p>
+
+    <p>
+        Acceleration describes how velocity changes over time. In basic, intuitive terms it means how "fast" we are speeding up or slowing down. How many "meters per second" of velocity are we gaining or losing? Like displacement and velocity,
+        it is a <strong>vector quantity</strong>. (It has a direction associated with it). In the language of calculus, it is the derivative of velocity, and so we have this equation for it.
+    </p>
+
+    <div class="equation">\( a = \frac{dv}{dt} \)</div>
+
+    <p>Since velocity is the derivative of position:</p>
+
+    <div class="equation">\( a = \frac{d^2x}{dt^2} \)</div>
+
+    <p>Acceleration has units of m/s². (You can think of this as m/s/s, or "meters per second per second")</p>
+
+    <div class="note">
+        <strong>Important:</strong><br>
+        Acceleration does not always mean speeding up. This is where it's nature as a vector becomes incredibly important to understand.
+        <ul>
+            <li>Same direction as velocity → speeding up</li>
+            <li>Opposite direction → slowing down</li>
+        </ul>
+    </div>
+
+    <p> 
+        Not to give the game away for future chapters, but we can imagine a force (like a person pulling a rope) attached to your car, silly as that may sound. If they are pulling <strong>with</strong>
+        the motion of your car (read: in the same direction as velocity) they are going to speed your car up. If they are pulling against it (in the opposite direction of velocity) they will slow
+        your car down. In the future, we will see that acceleration and force are closely related concepts!
+    </p>
+
+    <p>
+        Try it yourself! Below is a small applet that will let you control the accleration vector for a moving car. Try to make the car speed up, slow down, and reverse direction. 
+        Take note of the magnitude and direction of the acceleration vector as you do so. This should give you a good feel for acceleration in general.
+    </p>
+
+    <div class="applet-box">
+        <canvas id="accelerationCanvas"
+                width="800"
+                height="250">
+        </canvas>
+    </div>
+
+    <script type = "module"
+            src = "acceleration.js">
+    </script>
+
+<h2>The Role of Calculus</h2>
+
+<p>
+    Physical quantities are always changing. Just here in this chapter we're talking all about changes in position, velocity, and acceleration. Calculus will give us the tools to describe these
+    changes mathematically. We can never truly understand physics without also understanding calculus. To some, that sentence may instill fear and/or disgust. Fret not! I will give you a very basic
+    introduction to what we need, and expand upon it as necessary in the future. It is however, a good idea to look deeper into these concepts, as this will not be a complete or sufficient explanation.
+</p>
+
+<p>
+    Earlier, we introduced the relationships
+</p>
+
+<div class="equation">\( v = \frac{dx}{dt} \)</div>
+
+<p>and</p>
+
+<div class="equation">\( a = \frac{dv}{dt} \)</div>
+
+<p>
+    but what do these expressions actually mean?
+</p>
+
+<h3>Derivatives: Rates of Change</h3>
+
+<p>
+    A derivative measures how quickly one quantity changes with respect to another. 
+    In physics, we are usually interested in how quantities change with time.
+</p>
+
+    <p>
+        But how do we actually calculate the derivative of a specific function? There are various ways! But we will focus on one specific method for now, as it is what you will see
+        most in basic mechanics.
+    </p>
+
+    <h3>The Power Rule</h3>
+
+<p>
+    Most functions we will encounter in basic mechanics are powers of time, such as \( t^2 \), \( t^3 \), or \( t^{-1} \).
+    Fortunately, derivatives of these functions follow a simple pattern called the <strong>power rule</strong>.
+</p>
+
+<div class="equation">
+    \( \frac{d}{dt} t^n = n t^{n-1} \)
+</div>
+
+<p>
+    This rule tells us:
+</p>
+
+<ul>
+    <li>Bring the exponent down in front</li>
+    <li>Subtract 1 from the exponent</li>
+</ul>
+
+<p>
+    Example:
+</p>
+
+<div class="equation">
+    \( x(t) = t^3 \)
+</div>
+
+<div class="equation">
+    \( v(t) = \frac{dx}{dt} = 3t^2 \)
+</div>
+
+<div class="equation">
+    \( a(t) = \frac{dv}{dt} = 6t \)
+</div>
+
+
+<p>
+    Suppose we know the position of an object as a function of time:
+</p>
+
+<div class="equation">\( x(t) = t^2 \)</div>
+
+<p>
+    We can calculate its velocity by taking the derivative:
+</p>
+
+<div class="equation">\( v(t) = \frac{dx}{dt} = 2t \)</div>
+
+<p>
+    This tells us that the object's velocity increases linearly with time.
+    At \( t = 1 \), the velocity is \( 2 \). At \( t = 3 \), the velocity is \( 6 \), and so on.
+</p>
+
+<p>
+    Taking another derivative gives the acceleration:
+</p>
+
+<div class="equation">\( a(t) = \frac{dv}{dt} = 2 \)</div>
+
+<p>
+    The acceleration is constant. The object gains 2 meters per second of velocity every second.
+</p>
+
+<p>
+    In general:
+</p>
+
+<ul>
+    <li>\( x(t) \) describes position</li>
+    <li>\( v(t) = \frac{dx}{dt} \) describes how position changes</li>
+    <li>\( a(t) = \frac{dv}{dt} \) describes how velocity changes</li>
+</ul>
+
+<p>
+    Or in the language of calculus:
+</p>
+
+<ul>
+    <li>Velocity is the derivative of position</li>
+    <li>Acceleration is the derivative of velocity</li>
+</ul>
+
+<h3>Antiderivatives and Integration</h3>
+
+<p>
+    Calculus also allows us to work in the other direction.
+</p>
+
+<p>
+    If we know acceleration, we can calculate velocity. 
+    If we know velocity, we can calculate position.
+</p>
+
+<p>
+    This process is called taking an <strong>antiderivative</strong>, or integrating.
+</p>
+
+<h3>The Reverse Power Rule</h3>
+
+<p>
+    In order to calculate derivatives, we used the power rule. For integration, we have what is called the <strong>reverse power rule.</strong> As the name implies,
+    it basically functions the same way, but in reverse. Everything done in the power rule, we must do the opposite here.
+</p>
+
+<div class="equation">
+    \( \int t^n \, dt = \frac{t^{n+1}}{n+1} + C \quad (n \neq -1) \)
+</div>
+
+<p>
+    This rule tells us:
+</p>
+
+<ul>
+    <li>Add 1 to the exponent</li>
+    <li>Divide by the new exponent</li>
+    <li>Add a constant \( C \)</li>
+</ul>
+
+<p>
+    Here is an example:
+</p>
+
+<div class="equation">
+    \( a(t) = 2t \)
+</div>
+
+<p>
+    To calculate velocity:
+</p>
+
+<div class="equation">
+    \( v(t) = \int 2t \, dt = t^2 + C \)
+</div>
+
+<p>
+    To calculate position:
+</p>
+
+<div class="equation">
+    \( x(t) = \int t^2 \, dt = \frac{t^3}{3} + C \)
+</div>
+
+<p>
+    For example, suppose an object has constant acceleration:
+</p>
+
+<div class="equation">\( a(t) = 3 \)</div>
+
+<p>
+    Since acceleration is the derivative of velocity, we can reverse the process:
+</p>
+
+<div class="equation">\( v(t) = \int a(t)\,dt = \int 3\,dt = 3t + C \)</div>
+
+<p>
+    The constant \( C \) is called the <strong>constant of integration</strong>. 
+    Physically, it represents the object's initial velocity.
+</p>
+
+<p>
+    If the object begins with velocity \( v_0 \), we write:
+</p>
+
+<div class="equation">\( v(t) = v_0 + 3t \)</div>
+
+<p>
+    We can integrate once more to find position:
+</p>
+
+<div class="equation">\( x(t) = \int v(t)\,dt \)</div>
+
+<div class="equation">\( x(t) = \int (v_0 + 3t)\,dt \)</div>
+
+<div class="equation">\( x(t) = v_0 t + \frac{3}{2}t^2 + C \)</div>
+
+<p>
+    Here, the new constant of integration corresponds to the object's initial position.
+</p>
+
+<div class="note">
+    <strong>Important:</strong><br>
+    Each integration introduces a new constant of integration, C. In physics, these constants represent initial conditions like starting position or starting velocity.
+</div>
+
+<h2>More Useful Rules</h2>
+
+<p>
+    Here are a couple more useful rules when dealing with calculus
+</p>
+
+<h3>The Sum & Difference Rule</h3>
+
+<p>
+The derivative (or integral) of a sum is the sum of the derivatives (or integrals). The same applies to subtraction.
+</p>
+
+<div class="equation">
+    \( \frac{d}{dt}\big(f(t) + g(t)\big) = \frac{df}{dt} + \frac{dg}{dt} \)
+</div>
+
+<div class="equation">
+    \( \frac{d}{dt}\big(f(t) - g(t)\big) = \frac{df}{dt} - \frac{dg}{dt} \)
+</div>
+
+<div class="equation">
+    \( \int \big(f(t) + g(t)\big)\,dt = \int f(t)\,dt + \int g(t)\,dt \)
+</div>
+
+
+<h3>Rules Concerning Constants</h3>
+
+<p>
+<strong>Constants factor out of derivatives and integrals.</strong>
+</p>
+
+<div class="equation">
+    \( \frac{d}{dt}\big(C \cdot f(t)\big) = C \frac{df}{dt} \)
+</div>
+
+<div class="equation">
+    \( \int C \cdot f(t)\,dt = C \int f(t)\,dt \)
+</div>
+
+<div class="equation">
+    \( \frac{d}{dt}(C) = 0 \)
+</div>
+
+<div class="equation">
+    \( \int C\,dt = Ct + C_0 \)
+</div>
+
+<p>
+Here \( C \) is a constant and \( C_0 \) is a constant of integration.
+</p>
+
+
+<p>
+    <strong>The derivative of a constant is 0, and integrating 0 gives us a constant.</strong>
+</p>
+
+<div class = "equation">
+    \[
+    \frac{d}{dt}(C) = 0, \quad \int 0 \, dt = C
+    \]
+</div>
+<p>
+    These relationships form the mathematical foundation of kinematics,the study of motion.
+</p>
+<p>
+    We will use these ideas constantly throughout physics, so try to know them well! If you are in a physics class, you are probably also in a calculus class. If not,
+    There are abundant resources on the internet to check out to learn what calculus you need.
+</p>
+
+<h2>Practice Problems</h2>
+
+<div class="problem">
+    <p><strong>Problem 1.1</strong></p>
+
+    <p>
+        A particle moves along a line. Its initial position is \( x_1 = 2 \,\text{m} \)
+        and its final position is \( x_2 = 11 \,\text{m} \).
+        Determine the displacement.
+    </p>
+
+    <details>
+        <summary>Show Answer</summary>
+
+        <div class="equation">
+            \( \Delta x = x_2 - x_1 = 11 - 2 = 9 \,\text{m} \)
+        </div>
+
+        <p>The displacement is \( 9 \,\text{m} \) in the positive direction. (Remember displacement is a vector quantity, we must specify direction!)</p>
+    </details>
+</div>
+
+<div class="problem">
+    <p><strong>Problem 1.2</strong></p>
+
+    <p>
+        A runner starts at \( x = 0 \,\text{m} \), runs to \( x = 50 \,\text{m} \) in 10 seconds,
+        then returns to \( x = 30 \,\text{m} \) in 5 seconds.
+        Find their average velocity over the full motion.
+    </p>
+
+       <details>
+            <summary>Show Answer</summary>
+
+        <div class="equation">
+            \( v_{avg} = \frac{\Delta x}{\Delta t} \)
+        </div>
+
+        <div class="equation">
+            \( v_{avg} = \frac{30 - 0}{10 + 5} \)
+        </div>
+
+        <div class="equation">
+            \( v_{avg} = \frac{30\,\text{m}}{15\,\text{s}} \)
+        </div>
+
+        <div class="equation">
+            \( v_{avg} = 2\,\text{m/s} \)
+        </div>
+
+    </details>
+
+</details>
+</div>
+
+<div class="problem">
+    <p><strong>Problem 1.3</strong></p>
+
+    <p>
+        Given \( x(t) = 4t^2 - 2t \), find the velocity at \( t = 3 \,\text{s} \).
+    </p>
+
+    <details>
+        <summary>Show Answer</summary>
+
+        <div class="equation">
+            \( v(t) = \frac{dx}{dt} \)
+        </div>
+
+        <div class="equation">
+            \( v(t) = 2t + 3 \)
+        </div>
+
+        <div class="equation">
+            \( v(4) = 2(4) + 3 \)
+        </div>
+
+        <div class="equation">
+            \( v(4) = 11\,\text{m/s} \)
+        </div>
+</div>
+
+<div class="problem">
+    <p><strong>Problem 1.4</strong></p>
+
+    <p>
+        An object has velocity \( v = 10 \,\text{m/s} \) and acceleration \( a = -3 \,\text{m/s}^2 \).
+        Is the object speeding up or slowing down?
+    </p>
+
+        <details>
+            <summary>Show Answer</summary>
+
+        <div class="equation">
+            \( v = +10\,\text{m/s}, \quad a = -3\,\text{m/s}^2 \)
+        </div>
+
+        <div class="equation">
+            \text{Signs are opposite}
+        </div>
+
+        <div class="equation">
+            \text{Object is slowing down}
+        </div>
+
+    </details>
+</div>
+
+<div class="problem">
+    <p><strong>Problem 1.5</strong></p>
+
+    <p>
+        Two objects move along a line:
+    </p>
+
+    <ul>
+        <li>\( x_1(t) = 2t \)</li>
+        <li>\( x_2(t) = 20 - t \)</li>
+    </ul>
+
+    <p>Find when they meet.</p>
+
+        <details>
+            <summary>Show Answer</summary>
+
+        <div class="equation">
+            \( x_1 = x_2 \)
+        </div>
+
+        <div class="equation">
+            \( 2t = 50 - t \)
+        </div>
+
+        <div class="equation">
+            \( 3t = 50 \)
+        </div>
+
+        <div class="equation">
+            \( t = \frac{50}{3}\,\text{s} \approx 16.7\,\text{s} \)
+        </div>
+
+    </details>
+</div>
+
+<div class="problem">
+    <p><strong>Capstone — The Train Problem</strong></p>
+
+    <p>
+        A train leaves a station at \( x = 0 \) with constant acceleration \( a = 1.5\,\text{m/s}^2 \).
+        At the same time, another train approaches from \( x = 300\,\text{m} \) with constant velocity \( v = -10\,\text{m/s} \).
+        Find when and where they meet.
+    </p>
+
+    <details>
+
+        <div class="equation">
+            \( a = \frac{dv}{dt} \Rightarrow v(t) = v_0 + at \)
+        </div>
+
+        <div class="equation">
+            \( x(t) = v_0 t + \frac{1}{2}at^2 + x_0 \)
+        </div>
+
+        <div class="equation">
+            Train 1: \( x_1(t) = \frac{1}{2}(1.5)t^2 = 0.75t^2 \)
+        </div>
+
+        <div class="equation">
+            Train 2: \( x_2(t) = 300 - 10t \)
+        </div>
+
+        <div class="equation">
+            \( x_1 = x_2 \)
+        </div>
+
+        <div class="equation">
+            \( 0.75t^2 = 300 - 10t \)
+        </div>
+
+        <div class="equation">
+            \( 0.75t^2 + 10t - 300 = 0 \)
+        </div>
+
+        <div class="equation">
+            \( 3t^2 + 40t - 1200 = 0 \)
+        </div>
+
+        <div class="equation">
+            \( t = \frac{-40 \pm \sqrt{40^2 + 4(3)(1200)}}{6} \)
+        </div>
+
+        <div class="equation">
+            \( t = \frac{-40 \pm \sqrt{1600 + 14400}}{6} \)
+        </div>
+
+        <div class="equation">
+            \( t = \frac{-40 \pm \sqrt{16000}}{6} \)
+        </div>
+
+        <div class="equation">
+            \( t \approx 10.6\,\text{s} \)
+        </div>
+
+        <div class="equation">
+            \( x = 0.75t^2 \approx 84.5\,\text{m} \)
+        </div>
+
+    </details>
+</div>
+
+</div>
+
+</body>
+</html>
